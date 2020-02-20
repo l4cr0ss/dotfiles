@@ -14,7 +14,7 @@ for file in $DIR/*; do
         if [ -e $HOME/.$filename ]; then
             if ! [ -h $HOME/.$filename ]; then
                 # remove existing dotfile
-		status "deleted existing file $HOME/.$filename"
+                status "deleted existing file $HOME/.$filename"
                 rm $HOME/.$filename
             fi
         fi
