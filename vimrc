@@ -42,17 +42,23 @@ nnoremap <F2> :set number! relativenumber!<ENTER>
 inoremap <F2> <C-O>:set number! relativenumber!<ENTER>
 vnoremap <F2> <ESC>:set number! relativenumber!<ENTER>gv
 
-" Set textwidth=0 - toggle to 72 using F3
+" Set nopaste - toggle using F3
 set nopaste
 nnoremap <F3> :set nopaste! paste?<ENTER>
 inoremap <F3> <C-O>:set nopaste! paste?<ENTER>
 vnoremap <F3> <ESC>:set nopaste!<ENTER>gv
 
-" Set noexpandtab - toglge using F4
+" Set noexpandtab - toggle using F4
 set noexpandtab
 nnoremap <F4> :set noexpandtab!<ENTER>:set expandtab?<ENTER>
 inoremap <F4> <C-O>:set noexpandtab!<ENTER>:set expandtab?<ENTER>
 vnoremap <F4> <ESC>:set noexpandtab!<ENTER>gv
+
+" Set nowordwrap - toggle using F5
+set nowrap
+nnoremap <F5> :set nowrap!<ENTER>:set wrap?<ENTER>
+inoremap <F5> <C-O>:set nowrap!<ENTER>:set wrap?<ENTER>
+vnoremap <F5> <ESC>:set nowrap!<ENTER>gv
 
 " Re-source .vimrc (this file) using F12
 nnoremap <F12> :so ~/.vimrc<ENTER>
