@@ -44,8 +44,8 @@ vnoremap <F2> <ESC>:set number! relativenumber!<ENTER>gv
 
 " Set textwidth=0 - toggle to 72 using F3
 set nopaste
-nnoremap <F3> :set nopaste! set paste?<ENTER>
-inoremap <F3> <C-O>:set nopaste! set paste?<ENTER>
+nnoremap <F3> :set nopaste! paste?<ENTER>
+inoremap <F3> <C-O>:set nopaste! paste?<ENTER>
 vnoremap <F3> <ESC>:set nopaste!<ENTER>gv
 
 " Set noexpandtab - toglge using F4
@@ -64,7 +64,7 @@ set ruler
 set cc=80
 
 " Set tabstops and text length
-set tabstop=8 shiftwidth=8 noexpandtab textwidth=79
+set tabstop=2 shiftwidth=2 expandtab textwidth=79
 
 " Auto-wrap text using textwidth
 " http://vimdoc.sourceforge.net/htmldoc/change.html#fo-table
