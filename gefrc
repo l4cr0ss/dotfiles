@@ -1,0 +1,29 @@
+[aliases]
+dps = dereference
+dq = hexdump qword
+dd = hexdump dword
+dw = hexdump word
+dc = hexdump byte
+dt = pcustom
+bl = info breakpoints
+bp = break
+be = enable breakpoints
+bd = disable breakpoints
+bc = delete breakpoints
+tbp = tbreak
+tba = thbreak
+pa = advance
+ptc = finish
+t = step
+p = next
+g = gef run
+uf = disassemble
+telescope = dereference
+start = entry-break
+stack = dereference $sp 10
+argv = show args
+kp = info stack
+findmem = search-pattern
+n = nexti
+s = stepi
+
