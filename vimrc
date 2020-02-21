@@ -18,9 +18,6 @@ set nowritebackup
 " Unmap ex mode
 nnoremap Q <nop>
 
-" Open new splits to the bottom-right
-set splitbelow splitright
-
 " Set lazymacro to enable screen buffering during macro play
 set lazyredraw
 
