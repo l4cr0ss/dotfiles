@@ -126,3 +126,6 @@ hi  StatusLineNC term=NONE cterm=NONE ctermfg=0 ctermbg=242 gui=NONE guibg=DarkG
 
 " Start scrolling before the cursor reaches the bottom of the screen
 set scrolloff=5
+
+" Setup Termdebug
+packadd termdebug
