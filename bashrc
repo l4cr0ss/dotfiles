@@ -100,6 +100,16 @@ alias dim='sudo su -c "echo 50 >/sys/class/backlight/intel_backlight/brightness"
 alias undim='sudo su -c "echo 500 >/sys/class/backlight/intel_backlight/brightness"'
 alias mute='amixer -q -D pulse sset Master toggle'
 
+function apm {
+	wifi="$(nmcli r wifi | awk 'FNR = 2 {print $1}')"
+  if [ "$wifi" == "enabled" ]
+	 then
+			nmcli r wifi off
+    else
+			nmcli r wifi on
+	fi
+}
+
 export EDITOR=vim
 
 # Add an "alert" alias for long running commands.  Use like so:
