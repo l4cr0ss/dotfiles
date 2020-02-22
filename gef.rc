@@ -21,9 +21,9 @@ uf = disassemble
 telescope = dereference
 start = entry-break
 stack = dereference $sp 10
+stk = dereference $sp 10
 argv = show args
 kp = info stack
 findmem = search-pattern
 n = nexti
 s = stepi
-

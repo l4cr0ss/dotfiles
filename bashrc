@@ -96,6 +96,9 @@ alias gd='git diff'
 alias gc='git commit'
 alias ga='git add'
 
+alias dim='sudo su -c "echo 50 >/sys/class/backlight/intel_backlight/brightness"'
+alias undim='sudo su -c "echo 500 >/sys/class/backlight/intel_backlight/brightness"'
+
 export EDITOR=vim
 
 # Add an "alert" alias for long running commands.  Use like so:
