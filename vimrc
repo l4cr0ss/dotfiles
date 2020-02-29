@@ -33,29 +33,53 @@ nnoremap <F1> :set list! list?<ENTER>
 inoremap <F1> <C-O>:set list! list?<ENTER>
 vnoremap <F1> <ESC>:set list! list?<ENTER>gv
 
-" Set line numbers - toggle using F2
+" Set line numbers 
+" F2 - toggle off/on
 set number relativenumber
 nnoremap <F2> :set number! relativenumber!<ENTER>
 inoremap <F2> <C-O>:set number! relativenumber!<ENTER>
 vnoremap <F2> <ESC>:set number! relativenumber!<ENTER>gv
 
-" Set nopaste - toggle using F3
-set nopaste
-nnoremap <F3> :set nopaste! paste?<ENTER>
-inoremap <F3> <C-O>:set nopaste! paste?<ENTER>
-vnoremap <F3> <ESC>:set nopaste!<ENTER>gv
+" Set tabstops and shiftwidth 
+" F3 - cycle common ts/sw
+set tabstop=2 shiftwidth=2 expandtab textwidth=79
+function! CycleTabstop()
+  let s:map = { "2": "4", "4": "8", "8": "2" }
+  let s:curr = &tabstop
+  let s:next = s:map[s:curr]
+  let &tabstop=s:next 
+  let &shiftwidth=s:next 
+  set tabstop? shiftwidth? expandtab?
+endfunction
+nnoremap <F3> :call CycleTabstop()<ENTER>
+inoremap <F3> <C-O>:call CycleTabstop()<ENTER>
+vnoremap <F3> <ESC>:call CycleTabstop()<ENTER>gv
 
-" Set noexpandtab - toggle using F4
+" Set noexpandtab
+" F4 - toggle on/off
 set noexpandtab
-nnoremap <F4> :set noexpandtab!<ENTER>:set expandtab?<ENTER>
-inoremap <F4> <C-O>:set noexpandtab!<ENTER>:set expandtab?<ENTER>
-vnoremap <F4> <ESC>:set noexpandtab!<ENTER>gv
+function! ToggleExpandtab()
+  set expandtab!
+  set tabstop? shiftwidth? expandtab?
+endfunction
+nnoremap <F4> :call ToggleExpandtab()<ENTER>
+inoremap <F4> <C-O>:call ToggleExpandtab()<ENTER>
+vnoremap <F4> <ESC>:call ToggleExpandtab()<ENTER>gv
 
-" Set nowordwrap - toggle using F5
+" Set nopaste
+" F5 - toggle on/off
+set nopaste
+nnoremap <F5> :set nopaste! paste?<ENTER>
+inoremap <F5> <C-O>:set nopaste! paste?<ENTER>
+vnoremap <F5> <ESC>:set nopaste!<ENTER>gv
+
+" Set nowordwrap 
+" F6 - toggle toggle on/off
 set nowrap
-nnoremap <F5> :set nowrap!<ENTER>:set wrap?<ENTER>
-inoremap <F5> <C-O>:set nowrap!<ENTER>:set wrap?<ENTER>
-vnoremap <F5> <ESC>:set nowrap!<ENTER>gv
+nnoremap <F6> :set nowrap!<ENTER>:set wrap?<ENTER>
+inoremap <F6> <C-O>:set nowrap!<ENTER>:set wrap?<ENTER>
+vnoremap <F6> <ESC>:set nowrap!<ENTER>gv
+
 
 " Re-source .vimrc (this file) using F12
 nnoremap <F12> :so ~/.vimrc<ENTER>
@@ -65,9 +89,6 @@ vnoremap <F12> <ESC>:so ~/.vimrc<ENTER>gv
 " Set the ruler
 set ruler
 set cc=80
-
-" Set tabstops and text length
-set tabstop=2 shiftwidth=2 expandtab textwidth=79
 
 " Auto-wrap text using textwidth
 " http://vimdoc.sourceforge.net/htmldoc/change.html#fo-table

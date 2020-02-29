@@ -96,6 +96,10 @@ alias gd='git diff'
 alias gc='git commit'
 alias ga='git add'
 
+alias binja='~/Documents/binaryninja/binaryninja'
+
+alias python='python3.9'
+
 alias dim='sudo su -c "echo 50 >/sys/class/backlight/intel_backlight/brightness"'
 alias undim='sudo su -c "echo 500 >/sys/class/backlight/intel_backlight/brightness"'
 alias mute='amixer -q -D pulse sset Master toggle'
@@ -135,6 +139,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+export PATH="$HOME/bin/:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
