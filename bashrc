@@ -15,9 +15,15 @@ HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
 shopt -s histappend
 
+# verify history before executing it
+shopt -s histverify
+
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
+
+# disable flowcontrol
+stty -ixon
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -93,8 +99,37 @@ alias la='ls -A'
 alias l='ls -CF'
 alias gs='git status'
 alias gd='git diff'
-alias gc='git commit'
+#alias gc='git commit'
 alias ga='git add'
+
+
+# some colors
+BLACK='\033[0;30m'        # Black
+RED='\033[0;31m'          # Red
+GREEN='\033[0;32m'        # Green
+YELLOW='\033[0;33m'       # Yellow
+BLUE='\033[0;34m'         # Blue
+PURPLE='\033[0;35m'       # Purple
+CYAN='\033[0;36m'         # Cyan
+WHITE='\033[0;37m'        # White
+RESET='\033[0;0m'
+
+function gic() {
+  HEAD=$(git rev-parse --short HEAD)
+  BRANCH=$(git rev-parse --abbrev-ref HEAD)
+  p1=$1
+  p2=$2
+  p1=${p1:='HEAD~1'}
+  p2=${p2:="$HEAD"}
+  git "merge-base" "--is-ancestor" "$p1" "$p2"
+  case $? in
+    0) echo -e "$GREEN$p1 IS an ancestor of $BRANCH [$p2]$RESET";; 
+    1) echo -e "$RED$p1 IS NOT an ancestor of $BRANCH [$p2]$RESET";;
+    *) echo "error $? occurred running git merge-base --is-ancestor $p1 $p2"
+  esac
+}
+
+
 
 alias dim='sudo su -c "echo 50 >/sys/class/backlight/intel_backlight/brightness"'
 alias undim='sudo su -c "echo 500 >/sys/class/backlight/intel_backlight/brightness"'
@@ -125,6 +160,4 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 

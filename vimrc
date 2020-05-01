@@ -10,6 +10,10 @@ set hidden        " Hide buffers when they are abandoned
 set mouse=        " Disable mouse tomfoolery
 "set mouse=a       " Enable mouse usage (all modes)
 
+"let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:ag_prg = "ag --vimgrep"
+let g:ag_working_path_mode="r"
+
 " Disable swap files
 set noswapfile
 set nobackup
@@ -64,10 +68,9 @@ vnoremap <F12> <ESC>:so ~/.vimrc<ENTER>gv
 
 " Set the ruler
 set ruler
-set cc=80
 
 " Set tabstops and text length
-set tabstop=2 shiftwidth=2 expandtab textwidth=79
+set tabstop=2 shiftwidth=2 expandtab 
 
 " Auto-wrap text using textwidth
 " http://vimdoc.sourceforge.net/htmldoc/change.html#fo-table
@@ -101,6 +104,13 @@ if has("autocmd")
   " Load indentation rules and plugins according to detected filetype
   filetype plugin indent on
 endif
+
+" Highlight the current line number 
+augroup CursorLine
+  au!
+  au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+  au WinLeave * setlocal nocursorline
+augroup END
 
 " ~/.vim/ftplugin/gitcommit.vim
 " when editing commit messages, jump to the end of the line and insert
