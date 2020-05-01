@@ -12,6 +12,12 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
+# disable flow control
+stty -ixon
+
+# verify commands pulled from the history prior to executing them
+shopt -s histverify
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -99,9 +105,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias gs='git status'
 alias gd='git diff'
-#alias gc='git commit'
 alias ga='git add'
-
 
 # some colors
 BLACK='\033[0;30m'        # Black
@@ -130,10 +134,24 @@ function gic() {
 }
 
 
+alias ,op='objdump "$@"'
 
+alias binja='~/Documents/binaryninja/binaryninja'
+
+# Ubuntu desktop aliases
 alias dim='sudo su -c "echo 50 >/sys/class/backlight/intel_backlight/brightness"'
 alias undim='sudo su -c "echo 500 >/sys/class/backlight/intel_backlight/brightness"'
 alias mute='amixer -q -D pulse sset Master toggle'
+
+function apm {
+	wifi="$(nmcli r wifi | awk 'FNR = 2 {print $1}')"
+  if [ "$wifi" == "enabled" ]
+	 then
+			nmcli r wifi off
+    else
+			nmcli r wifi on
+	fi
+}
 
 export EDITOR=vim
 
@@ -161,3 +179,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/l4/.sdkman"
+[[ -s "/home/l4/.sdkman/bin/sdkman-init.sh" ]] && source "/home/l4/.sdkman/bin/sdkman-init.sh"
