@@ -106,6 +106,7 @@ alias l='ls -CF'
 alias gs='git status'
 alias gd='git diff'
 alias ga='git add'
+alias gc='git commit'
 
 # some colors
 BLACK='\033[0;30m'        # Black

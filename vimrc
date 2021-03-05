@@ -14,6 +14,9 @@ set mouse=        " Disable mouse tomfoolery
 let g:ag_prg = "ag --vimgrep"
 let g:ag_working_path_mode="r"
 
+" Repeat last macro with Q
+nnoremap Q @@
+
 " Disable swap files
 set noswapfile
 set nobackup
@@ -121,11 +124,20 @@ nnoremap <F9> :call CycleRolodexMode()<ENTER>
 inoremap <F9> <C-O>:call CycleRolodexMode()<ENTER>
 vnoremap <F9> <ESC>:call CycleRolodexMode()<ENTER>gv
 
+" Re-source .vimrc (this file)
+nnoremap <F10> :so ~/.vimrc<ENTER>
+inoremap <F10> <C-O>:so ~/.vimrc<ENTER>
+vnoremap <F10> <ESC>:so ~/.vimrc<ENTER>gv
 
-" Re-source .vimrc (this file) using F12
-nnoremap <F12> :so ~/.vimrc<ENTER>
-inoremap <F12> <C-O>:so ~/.vimrc<ENTER>
-vnoremap <F12> <ESC>:so ~/.vimrc<ENTER>gv
+" Move to the previous tab
+nnoremap <F11> :tabp <CR>
+inoremap <F11> <C-O> :tabp <CR>
+vnoremap <F11> <ESC> :tabp <CR>
+
+" Move to the next tab
+nnoremap <F12> :tabn <CR>
+inoremap <F12> <C-O> :tabn <CR>
+vnoremap <F12> <ESC> :tabn <CR>
 
 " Set the ruler
 set ruler
@@ -190,7 +202,7 @@ set nostartofline
 " Configure the statusline
 " http://vimdoc.sourceforge.net/htmldoc/options.html#'statusline'
 set statusline=%<%F%h%m%r\ -\ %b\ (0x%B)%=[%o\ (0x%O)/%{line2byte(line(\"$\")+1)-1}B]\ %l,%c\ %P laststatus=2
-hi  StatusLineNC term=NONE cterm=NONE ctermfg=0 ctermbg=242 gui=NONE guibg=DarkGrey
+"hi  StatusLineNC term=NONE cterm=NONE ctermfg=0 ctermbg=242 gui=NONE guibg=DarkGrey
 
 " Start scrolling before the cursor reaches the bottom of the screen
 set scrolloff=5
